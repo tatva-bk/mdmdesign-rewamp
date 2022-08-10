@@ -649,10 +649,10 @@ h2 { font-size: 30px; line-height: 1.3; margin-bottom: 30px; font-weight: normal
     .projects-listing-section .view-more-wrapper { display: block; }
     .projects-listing-section.custom-grid-section { padding: 28px 0 50px; }
     .projects-listing-section.custom-grid-section .custom-tabbing-wrapper .tab-heading { padding-bottom: 30px; }
-    .custom-grid-section .small-col-grid { display: none; }
+    .custom-grid-section .small-col-grid .custom-grid-wrapper .grid-item { max-width: 25%;flex: 0 0 25%; }
     .projects-listing-section .desktop-view, .projects-listing-section .mobile-view { display: none; }
     .projects-listing-section .tablet-view { display: block; }
-    .projects-listing-section.custom-grid-section .grid-outer { padding-bottom: 0; }
+    .projects-listing-section.custom-grid-section .grid-outer { padding-bottom: 38px; }
     .custom-tabbing-wrapper .tab-content { min-height: 500px;}
 }
 @media(max-width:991px) {
@@ -758,6 +758,7 @@ h2 { font-size: 30px; line-height: 1.3; margin-bottom: 30px; font-weight: normal
     .product-description-section .related-project h2 { margin-bottom: 30px; }
     .product-description-section .our-partners .slick-track { display: flex; align-items: center; }
     .product-description-section .our-partners ul { display: block; }
+    .projects-listing-section.custom-grid-section .grid-outer { padding-bottom: 68px; }
 
     /* contact */
     .contact-section { padding: 32px 0 49px; }
@@ -824,6 +825,7 @@ h2 { font-size: 30px; line-height: 1.3; margin-bottom: 30px; font-weight: normal
     .projects-listing-section.custom-grid-section { padding: 19px 0 44px; }
     .projects-listing-section.custom-grid-section .custom-tabbing-wrapper .tab-heading { padding-bottom: 25px; }
     .projects-listing-section .view-more-wrapper { padding-top: 34px; }
+    .custom-grid-section .small-col-grid .custom-grid-wrapper .grid-item { max-width: 50%;flex: 0 0 50%; }
 
 }
 @media(max-width:575px) {
