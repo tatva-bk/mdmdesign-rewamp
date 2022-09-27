@@ -139,24 +139,24 @@ add_action( 'widgets_init', 'mdmdesign_widgets_init' );
  */
 function mdmdesign_scripts() {
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_style( 'mdmdesign-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'mdmdesign-style', get_stylesheet_uri(), array(), '1.1.1' );
 	wp_style_add_data( 'mdmdesign-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'mdmdesign-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'mdmdesign-slick-min', get_template_directory_uri() . '/public/js/slick.min.js', array('jquery'), _S_VERSION, true );
-	wp_enqueue_script( 'mdmdesign-aos-js', get_template_directory_uri() . '/public/js/aos.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'mdmdesign-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.1.1', true );
+	wp_enqueue_script( 'mdmdesign-slick-min', get_template_directory_uri() . '/public/js/slick.min.js', array('jquery'), '1.1.1', true );
+	wp_enqueue_script( 'mdmdesign-aos-js', get_template_directory_uri() . '/public/js/aos.js', array('jquery'), '1.1.1', true );
 	if(is_page_template('page-templates/contact.php')) {
-		wp_enqueue_script( 'mdmdesign-google-map-js', get_template_directory_uri() . '/public/js/google-map.js', array(), _S_VERSION, true );
+		wp_enqueue_script( 'mdmdesign-google-map-js', get_template_directory_uri() . '/public/js/google-map.js', array(), '1.1.1', true );
 	}
-    wp_enqueue_script( 'mdmdesign-general-js', get_template_directory_uri() . '/public/js/general.js', array(), S_VERSION, true );
+    wp_enqueue_script( 'mdmdesign-general-js', get_template_directory_uri() . '/public/js/general.js', array(), '1.1.1', true );
 	wp_register_script('mdmdesign-custom-js', get_template_directory_uri() . '/public/js/custom.js', array(), '', true);
 	wp_localize_script('mdmdesign-custom-js', 'ajax_posts', array('ajaxurl' => admin_url('admin-ajax.php')));
 	wp_enqueue_script('mdmdesign-custom-js');
 
-	wp_enqueue_style( 'mdmdesign-slick-style', get_template_directory_uri() . '/public/css/slick.css',array(), _S_VERSION );
-	wp_enqueue_style( 'mdmdesign-slick-theme-style', get_template_directory_uri() . '/public/css/slick-theme.css',array(), _S_VERSION );
-	wp_enqueue_style( 'mdmdesign-aos-style', get_template_directory_uri() . '/public/css/aos.css',array(), _S_VERSION );
-	wp_enqueue_style( 'mdmdesign-custom-style', get_template_directory_uri() . '/public/css/custom.css',array(), _S_VERSION );	
+	wp_enqueue_style( 'mdmdesign-slick-style', get_template_directory_uri() . '/public/css/slick.css',array(), '1.1.1' );
+	wp_enqueue_style( 'mdmdesign-slick-theme-style', get_template_directory_uri() . '/public/css/slick-theme.css',array(), '1.1.1' );
+	wp_enqueue_style( 'mdmdesign-aos-style', get_template_directory_uri() . '/public/css/aos.css',array(), '1.1.1' );
+	wp_enqueue_style( 'mdmdesign-custom-style', get_template_directory_uri() . '/public/css/custom.css',array(), '1.1.1' );	
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

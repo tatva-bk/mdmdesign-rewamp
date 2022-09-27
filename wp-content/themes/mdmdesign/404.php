@@ -17,7 +17,7 @@ get_header();
 					<h2 class="page-detail">Oops! That page can’t be found.</h2>
 					<p>It looks like nothing was found at this location.</p>
 					<div class="btn-wrapper">
-						<a href="#" class="return-home-link" title="Return Home">Return Home</a>
+						<a href="<?php echo home_url('/'); ?>" class="return-home-link" title="Return Home">Return Home</a>
 					</div>
 				</div>
 			</section><!-- .error-404 -->

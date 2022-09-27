@@ -14,7 +14,8 @@
 		<div class="container">
 			<div class="footer-top-wrapper">
 				<div class="footer-top-left">
-					<div class="logo-block"><?php 
+					<div class="logo-block">
+						<?php 
 						if(has_custom_logo()) {
 							$custom_logo_id = get_theme_mod( 'custom_logo' );
 							$image = wp_get_attachment_image_src( $custom_logo_id , 'full' ); ?>
@@ -34,8 +35,9 @@
 				</div><?php 
 				if(get_field('address_details_line_1','option') || get_field('contact_number','option') || get_field('address_details_line_2','option')) { ?>
 					<div class="footer-top-right">
-						<p><?php echo get_field('address_details_line_1','option').get_field('address_details_line_2','option'); ?></p>
+						<div><p><?php echo get_field('address_details_line_1','option').' '.get_field('address_details_line_2','option'); ?></p></div>
 						<a href="tel:<?php echo str_replace(" ", "", get_field('contact_number','option')); ?>" title="Call us"><?php echo get_field('contact_number','option'); ?></a>
+						<a title = "Mail us" href="mailto:<?php echo get_field('email_adress','option'); ?>" class="mail-link"><?php echo get_field('email_adress','option'); ?></a>
 					</div><?php 
 				} ?>
 			</div>

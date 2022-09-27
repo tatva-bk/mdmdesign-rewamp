@@ -21,7 +21,7 @@ $pageID = get_the_ID();
                                     $activeClass = "";
                                 } 
                             } else {
-                                if($activeClassCount == 2) {
+                                if($activeClassCount == 1) {
                                     $activeClass = "active"; 
                                 } else { 
                                     $activeClass = "";
@@ -45,7 +45,7 @@ $pageID = get_the_ID();
                                 $activeTabClass = "";
                             } 
                         } else {
-                            if($activeTabClassCount == 2) {
+                            if($activeTabClassCount == 1) {
                                 $activeTabClass = "active"; 
                             } else { 
                                 $activeTabClass = "";
@@ -64,7 +64,7 @@ $pageID = get_the_ID();
                         );?>
                     <div class="tab-content-inner <?php echo $activeTabClass; ?>" data-target="<?php echo $category->slug; ?>">
                         <div class="grid-outer">
-                            <div class="desktop-view">
+                            <div>
                                 <div class="custom-grid-wrapper"><?php 
                                     $args['posts_per_page'] = -1;
                                     $my_query = new WP_Query( $args );
@@ -77,56 +77,6 @@ $pageID = get_the_ID();
                                     } ?>
                                 </div>
                             </div>
-                            <div class="tablet-view">
-                                <div class="custom-grid-wrapper add-tablet-peoject-<?php echo $category->slug; ?>"><?php 
-                                    $projectsPerPage = get_field('number_of_projects_display_for_tablet',$pageID);
-                                    $projectsPerPageAfterLoadMore = get_field('number_of_projects_display_after_load_more_for_tablet',$pageID);
-                                    $args['posts_per_page'] =  $projectsPerPage;
-                                    $my_query_tablet = new WP_Query( $args );
-                                    if($my_query_tablet->have_posts()) {
-                                        while ($my_query_tablet->have_posts()) { 
-                                            $my_query_tablet->the_post();
-                                            echo get_projects();
-                                        }
-                                    } ?>
-                                </div>
-                                <input type="hidden" class="get_number_of_project_per_page_after_load_more" value="<?php echo $projectsPerPageAfterLoadMore; ?>">
-                                <input type="hidden" class="get_category_project" value="<?php echo $category->slug; ?>">
-                                <input type="hidden" class="total_post" value="<?php echo  $totalPost; ?>">
-                                <div class="view-more-wrapper view-more-tablet-<?php echo $category->slug; ?>">
-                                    <a href="javascript:void(0);" title="View More" class="view-more-tablet-project" data-offset-attr="<?php echo $projectsPerPage; ?>">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/down-arrow.svg" alt="down-arrow-white">
-                                        <span>View More</span>
-                                    </a>
-                                </div>
-                                <div class = "no-found after-result-tablet-<?php echo $category->slug; ?>" style="display:none"><?php echo get_field('no_more_post_found_msg',$pageID); ?></div>
-                            </div>
-                            <div class="mobile-view">
-                                <div class="custom-grid-wrapper add-mobile-peoject-<?php echo $category->slug; ?>"><?php 
-                                    $projectsPerPageMobile = get_field('number_of_projects_display_for_mobile',$pageID);
-                                    $projectsPerPageAfterLoadMoreMobile = get_field('number_of_projects_display_after_load_more_for_mobile',$pageID);
-                                    $args['posts_per_page'] =  $projectsPerPageMobile;
-                                    $my_query_mobile = new WP_Query( $args );
-                                    if($my_query_mobile->have_posts()) {
-                                        while ($my_query_mobile->have_posts()) { 
-                                            $my_query_mobile->the_post();   
-                                            echo get_projects();
-                                        }
-                                    } ?>
-                                </div>
-                                <input type="hidden" class="get_category_project" value="<?php echo $category->slug; ?>">
-                                <input type="hidden" class="get_number_of_project_per_page_after_load_more_mobile" value="<?php echo $projectsPerPageAfterLoadMoreMobile; ?>">
-                                <div class="view-more-wrapper view-more-mobile-<?php echo $category->slug; ?>">
-                                    <a href="javascript:void(0);" title="View More" class="view-more-mobile-project" data-offset-attr="<?php echo $projectsPerPageMobile; ?>">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/public/images/down-arrow.svg" alt="down-arrow-white">
-                                        <span>View More</span>
-                                    </a>
-                                </div>
-                                <div class = "no-found after-result-mobile-<?php echo $category->slug; ?>" style="display:none"><?php echo get_field('no_more_post_found_msg',$pageID); ?></div>
-                            </div>
-                            <div class="loader-wrapper" style="display: none;">
-                                <img src="<?php echo get_template_directory_uri(); ?>/public/images/site-loader.svg" alt="site-loader">
-                            </div>
                         </div><?php
                         $catID = 'projects-category_' . $category->term_id;
                         if(have_rows('small_tile_project_listing', $catID)) { ?>
@@ -135,12 +85,21 @@ $pageID = get_the_ID();
                                 while(have_rows('small_tile_project_listing', $catID)) {
                                     the_row();
                                     $smallProjectImage = get_sub_field('small_tile_project_image', $catID); 
+                                    $optionValue = get_sub_field('display_video', $catID); 
+                                    $smallProjectVideo = get_sub_field('small_tile_project_vedio', $catID); 
                                     ?>
                                     <div class="grid-item">
-                                        <div class="grid-item-inner">
-                                            <a href="javascript:void(0);" class="modal-link" data-link="project-design-modal" data-src="<?php echo $smallProjectImage['url']; ?>">
-                                                <img src="<?php echo $smallProjectImage['url']; ?>" alt="small-col-popup-img-1">
-                                            </a>
+                                        <div class="grid-item-inner"><?php
+                                            if(!$optionValue) { ?>
+                                                <a href="javascript:void(0);" class="modal-link" data-link="project-design-modal" data-src="<?php echo $smallProjectImage['url']; ?>">
+                                                    <img src="<?php echo $smallProjectImage['url']; ?>" alt="small-col-popup-img-1">
+                                                </a><?php
+                                            } else { ?>
+                                                <a href="javascript:void(0)" title="Project Video" class="video-link" data-link="iframe-video" data-src="<?php echo $smallProjectVideo; ?>">
+                                                    <img class="small-project-video" src="<?php echo get_template_directory_uri(); ?>/public/images/video-icon.png" alt="video icon">
+                                                    <img src="<?php echo $smallProjectImage['url']; ?>" alt="project-image">
+                                                </a> 
+                                            <?php } ?>
                                         </div>
                                     </div><?php 
                                 } ?>

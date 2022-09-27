@@ -35,7 +35,7 @@ get_header();
                 </div>
                 <div class="project-detail-block">
                     <div class="project-detail-title">
-                         Project details
+                    Overview
                     </div>
                     <div class="project-detail-content"><?php 
                         if(get_field('partnership_since_year')) { ?>
@@ -118,7 +118,7 @@ get_header();
 
         </div>
     </section>
-    <section class="custom-grid-section related-projects">
+    <!-- <section class="custom-grid-section related-projects">
         <div class="container"> 
              <h2>Other PROJECTS</h2>
             <div class="custom-grid-wrapper"><?php
@@ -155,7 +155,7 @@ get_header();
                 } ?>
             </div>
         </div>
-    </section>
+    </section> -->
 </div>
 <div class="custom-modal" data-target="project-video-modal">
     <div class="modal-backdrop"></div>

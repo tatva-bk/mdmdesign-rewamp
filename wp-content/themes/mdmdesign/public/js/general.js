@@ -101,6 +101,10 @@ function our_partner_slider() {
                     settings: {
                         variableWidth:true,
                         slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 1000,
+                        
                     }
                 },
               
@@ -131,7 +135,7 @@ function number_count() {
                             jQuery(this).find('em').text(now.toFixed(1))
                         }
                         else {
-                            jQuery(this).find('em').text(Math.ceil(now));
+                            jQuery(this).find('em').text(Math.ceil(now).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));;
                         }
                     }
                 }); {
@@ -166,7 +170,7 @@ jQuery(document).ready(function() {
     footer_menu();
     footerAdj();
     our_partner_slider();
-    number_count();
+   
     project_info_block();
     setTimeout(function() {
         equalHeight();
@@ -180,6 +184,7 @@ jQuery(document).ready(function() {
        }
     });
 
+   
     // client logo slider
     if(jQuery('.brand-logo-slider').length){
         jQuery('.brand-logo-slider').slick({
@@ -260,10 +265,7 @@ jQuery(document).ready(function() {
     });
 
 
-    AOS.init({
-        once: true,
-    });
-
+  
     // product
     jQuery('.product-description-section .product-list-wrap h4').click(function(){
         if(jQuery(window).width()<768) {
@@ -278,6 +280,13 @@ jQuery(document).ready(function() {
 
 });
 
+jQuery(window).load(function(){
+      AOS.init({
+        once: true,
+    });
+    number_count();
+
+})
 jQuery(window).resize(function(){
     mobile_menu();
     footer_menu();

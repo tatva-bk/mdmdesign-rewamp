@@ -48,7 +48,10 @@
 									<address>
 										<?php echo get_field('address_details_line_1','option').'</br>'.get_field('address_details_line_2','option'); ?>
 									</address>
-									<span class="contact-number"> T <a href="tel:<?php echo str_replace(" ", "", get_field('contact_number','option')); ?>" title="Call us"><?php echo get_field('contact_number','option'); ?></a></span><?php
+									<span class="contact-number"><a href="tel:<?php echo str_replace(" ", "", get_field('contact_number','option')); ?>" title="Call us"><?php echo get_field('contact_number','option'); ?></a></span><?php
+								} 
+								if(get_field('email_adress','option')) { ?>
+									<span class="mail-detail"><a href="mailto:<?php echo get_field('email_adress','option'); ?>" title="Mail us"><?php echo get_field('email_adress','option'); ?></a></span><?php
 								} 
 								if(have_rows('hedaer_social_details','option')) { ?>
 									<ul  class="social-links-wrapper"><?php 
@@ -56,7 +59,7 @@
 										the_row();
 										$headersocialIcon = get_sub_field('header_social_icon','option');
 										$headersocialURL = get_sub_field('header_social_url','option'); ?>
-										<li><a href="<?php echo $headersocialURL; ?>" title="<?php echo $headersocialIcon['title']; ?>"><img src="<?php echo $headersocialIcon['url']; ?>" alt="<?php echo $headersocialIcon['alt']; ?>"></a></li><?php
+										<li><a target="_blank" href="<?php echo $headersocialURL; ?>" title="<?php echo $headersocialIcon['title']; ?>"><img src="<?php echo $headersocialIcon['url']; ?>" alt="<?php echo $headersocialIcon['alt']; ?>"></a></li><?php
 									} ?>
 									</ul><?php 
 								} ?>

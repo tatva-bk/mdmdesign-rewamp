@@ -41,7 +41,7 @@ function initialize() {
         locations[o];
         t.geocode({ address: locations[o] }, function (t, i) {
             if (i == google.maps.GeocoderStatus.OK) {
-                var o = new google.maps.LatLng(-37.81548701, 144.97053207);
+                var o = new google.maps.LatLng(-37.81551200, 144.970485);
                 addMarker(o), e.extend(o), map.fitBounds(e), 1 == locations.length && map.setZoom(17);
             }
         });

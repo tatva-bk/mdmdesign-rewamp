@@ -6,8 +6,12 @@ get_header();
 ?>
 <div class="page-wrapper has-banner">
 	<section class="home-banner-section"><?php
-		if(get_field('banner_desktop_image')) { ?>
-			<img src="<?php echo get_field('banner_desktop_image'); ?>" alt="" class="home-bg-img"><?php
+		if(get_field('banner_image_video_url')) { ?>
+			<video class="home-bg-video" autoplay muted playsinline loop>
+				<source src="<?php echo get_field('banner_image_video_url'); ?>" type='video/mp4'></source>
+				<source src="<?php echo get_field('banner_image_webm_video_url'); ?>" type='video/webm'></source>
+				<source src="<?php echo get_field('banner_image_ogg_video_url'); ?>" type='video/ogg'></source>
+			</video><?php
 		} ?>
 		<div class="container">
 			<div class="banner-inner-wrapper">
@@ -40,8 +44,13 @@ get_header();
 			<div class="container">
 				<div class="information-block"><?php
 					while(have_rows('number_with_text_detail')) {
-						the_row(); ?>
-						<div class="information-inner">
+						the_row();
+						if(get_sub_field('please_check_this_checkbox')){
+							$addExtraClass = "percentage-structure";
+						} else {
+							$addExtraClass = "";
+						} ?>
+						<div class="information-inner <?php echo $addExtraClass; ?>">
 							<span class="blue-gradiant-text counter-text"  data-aos="fade-up"><?php echo get_sub_field('numbers'); ?></span>
 							<?php echo get_sub_field('content_under_numbers'); ?>
 						</div><?php 

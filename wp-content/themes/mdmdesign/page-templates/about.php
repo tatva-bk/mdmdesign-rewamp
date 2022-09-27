@@ -52,7 +52,7 @@ get_header();
                             <div class="member-img-wrap"><img class="member-img" src="<?php echo get_sub_field('director_image'); ?>" alt="<?php echo get_sub_field('director_name'); ?> Image" /></div>
                             <h3><?php echo get_sub_field('director_name'); ?><span><?php echo get_sub_field('director_designation'); ?></span></h3>
                             <p><?php echo get_sub_field('director_details'); ?></p>
-                            <a href="<?php echo get_sub_field('director_connect_link'); ?>" title="<?php echo get_sub_field('director_connect_label'); ?>">
+                            <a target="_blank" href="<?php echo get_sub_field('director_connect_link'); ?>" title="<?php echo get_sub_field('director_connect_label'); ?>">
                                 <em><img src="<?php echo get_template_directory_uri(); ?>/public/images/linkedin.svg" alt="linkedin"></em>
                                 <span><?php echo get_sub_field('director_connect_label'); ?></span>
                             </a>

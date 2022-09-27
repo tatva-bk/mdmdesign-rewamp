@@ -75,25 +75,24 @@ get_header();
                                     <p><?php echo get_field('framework_section_content',$catID); ?></p><?php
                                 } ?>
                                 </div><?php
+                                $frameworkDeskImage = get_field('framework_image',$catID);
+                                $frameworkMobImage = get_field('framework_mobile_image',$catID);
+                                if(empty($frameworkMobImage)) {
+                                    $frameworkMobImage = $frameworkDeskImage;
+                                }
                                 
-                                if(get_field('framework_image',$catID)) { ?>
+                                if(get_field('framework_image',$catID) || et_field('framework_mobile_image',$catID)) { ?>
                                     <div class="product-graph-block">
-                                        <div class="mble-accordian-link">
-                                            <a href="javascript:void(0);" title="View frame work" class="mobile-popup-link" data-link="framework-popup" data-image="<?php echo get_field('framework_image',$catID); ?>">
-                                                <em><img src="<?php echo get_template_directory_uri(); ?>/public/images/white-arrow.svg" alt="white-arrow">
-                                                </em> View frame work
-                                            </a>
-                                        </div>
-                                        <div class="product-graph-image"><img src="<?php echo get_field('framework_image',$catID); ?>" alt="product-branding-digital"></div>
+                                        <div class="product-graph-image desktop-view"><img src="<?php echo $frameworkDeskImage; ?>" alt="product-framework"></div>
+                                        <div class="product-graph-image mobile-view"><img src="<?php echo $frameworkMobImage; ?>" alt="product-framework"></div>
                                     </div><?php
-                                } 
-
-                                if(get_field('products_section_heading',$catID)) { ?> 
-                                    <h3><?php echo get_field('products_section_heading',$catID); ?></h3><?php 
                                 } ?>
                                 <div class="product-description"><?php
                                     if(have_rows('products_details',$catID)) { ?>
                                         <div class="product-description-item-left"><?php
+                                            if(get_field('products_section_heading',$catID)) { ?> 
+                                                <h3><?php echo get_field('products_section_heading',$catID); ?></h3><?php 
+                                            } 
                                             while(have_rows('products_details',$catID)) { 
                                                 the_row(); 
                                                 if(get_sub_field('products_heading',$catID)) { ?> 
@@ -107,7 +106,10 @@ get_header();
                                     } 
 
                                     if(have_rows('products_data_listing',$catID)) { ?>
-                                        <div class="product-description-item-right">
+                                        <div class="product-description-item-right"><?php
+                                            if(get_field('products_data_listing_heading',$catID)) { ?> 
+                                                <h3><?php echo get_field('products_data_listing_heading',$catID); ?></h3><?php 
+                                            }  ?>
                                             <div class="product-description-item"><?php
                                                 $count = 1;
                                                 while(have_rows('products_data_listing',$catID)) { 
@@ -184,7 +186,7 @@ get_header();
                                 
                             </div>
                             <div class="related-project">
-                                <h2>RELATED PROJECTS</h2>
+                                <h2>PROJECTS</h2>
                                 <div class="custom-grid-section">
                                     <div class="custom-grid-wrapper"><?php
                                         $args = array(
